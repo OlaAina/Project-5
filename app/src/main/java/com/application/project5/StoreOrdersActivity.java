@@ -13,8 +13,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_orders);
-        int i=0;
-        mTextView = (TextView) findViewById(R.id.text);
+
 
     }
 }

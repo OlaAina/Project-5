@@ -14,6 +14,5 @@ public class DonutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donut);
 
-        mTextView = (TextView) findViewById(R.id.text);
     }
 }

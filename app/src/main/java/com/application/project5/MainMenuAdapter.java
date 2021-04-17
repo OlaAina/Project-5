@@ -23,10 +23,10 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MainMe
             Intent intent;
             switch(itemPosition){
                 case 0:
-                    intent= new Intent(context, DonutActivity.class);
+                    intent= new Intent(context, CoffeeActivity.class);
                     break;
                 case 1:
-                    intent= new Intent(context, CoffeeActivity.class);
+                    intent= new Intent(context, DonutActivity.class);
                     break;
                 case 2:
                     intent= new Intent(context, OrderDetailActivity.class);

@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DonutActivity"></activity>
+        <activity android:name=".CoffeeActivity"></activity>
+        <activity android:name=".StoreOrdersActivity"></activity>
+        <activity android:name=".OrderDetailActivity"></activity>
     </application>
 
 </manifest>

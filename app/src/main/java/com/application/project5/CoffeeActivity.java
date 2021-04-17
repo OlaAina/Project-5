@@ -14,7 +14,6 @@ public class CoffeeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coffee);
 
-        mTextView = (TextView) findViewById(R.id.text);
 
     }
 }
