@@ -133,6 +133,5 @@ public class Coffee extends MenuItem{
 	public void setNumOfAddins(int numOfAddins) {
 		this.numOfAddins = numOfAddins;
 	}
-	
 
 }

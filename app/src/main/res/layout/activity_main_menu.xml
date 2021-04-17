@@ -6,39 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="105dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/cart" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="101dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/donut" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="102dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/coffee" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="102dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:srcCompat="@drawable/orders" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="295dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
