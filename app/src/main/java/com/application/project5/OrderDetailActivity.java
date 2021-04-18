@@ -22,9 +22,13 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView finalPrice;
 
     StoreOrders storeOrders= StoreOrdersActivity.getStoreOrders();
+    ArrayList<MenuItem> arrayList=new ArrayList<>();
+    ArrayAdapter arrayAdapter=null;
+
     static Order order= new Order();
     final static double TAX_RATE= 6.625/100;
 
+    MenuItem selected= null;
 
 
     @Override
@@ -39,7 +43,6 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     public void setListView(){
         itemsListView=(ListView)findViewById(R.id.itemsListView);
-        ArrayList<MenuItem> arrayList=new ArrayList<>();
         MenuItem[] indexes= new MenuItem[order.getNumOfItems()];
 
         for (int i = 0; i < order.getOrder().length; i++) {
@@ -48,12 +51,12 @@ public class OrderDetailActivity extends AppCompatActivity {
                 arrayList.add(indexes[i]);
             }
         }
-        ArrayAdapter arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1);
+        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1);
         itemsListView.setAdapter(arrayAdapter);
         itemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                    selected= (MenuItem) itemsListView.getItemAtPosition(position);
             }
         });
     }
@@ -98,6 +101,47 @@ public class OrderDetailActivity extends AppCompatActivity {
             this.finalPrice.setText("$" + String.format("%.2f", finalPrice));
         }
     }
+    public void removeItem(View view){
+        try {
+            order.setPrice(order.getOrderPrice() - selected.getItemPrice());
+            order.remove(selected);
+            setListView();
+            setSubTotal();
+            setTax();
+            setFinalPrice();
+        }
+        catch(NullPointerException ex){
+            Toast.makeText(this, "Null", Toast.LENGTH_LONG);
+        }
+    }
+    public void placeOrder(View view){
+        int empty=0;
+        for(int i=0; i< order.getNumOfItems();i++){
+            if(order.getOrder()[i]!=null){
+                empty=1;
+            }
+        }
+        if(empty==1) {
+            try {
+                makeOrderNumber();
+                storeOrders.add(order);
+            } catch (NullPointerException ex) {
+                Toast.makeText(this, "Null", Toast.LENGTH_LONG);
+            }
+            arrayList.clear();
+            arrayAdapter.notifyDataSetChanged();
+            order = new Order();
+            MenuItem[] itemList = new MenuItem[4];
+            order.setOrder(itemList);
+            setFinalPrice();
+            setTax();
+            setSubTotal();
+            Toast.makeText(this, "Order Placed", Toast.LENGTH_LONG);
+        }
+        else{
+            Toast.makeText(this, "Order Empty", Toast.LENGTH_LONG);
+        }
+    }
 
     public ListView getItemsListView() {
         return itemsListView;
@@ -122,6 +166,10 @@ public class OrderDetailActivity extends AppCompatActivity {
     public static void setOrder(Order order) {
         OrderDetailActivity.order = order;
     }
-
+    private static int startingNumber=1;
+    public static void makeOrderNumber(){
+        order.setOrderNumber(startingNumber);
+        startingNumber++;
+    }
 
 }
