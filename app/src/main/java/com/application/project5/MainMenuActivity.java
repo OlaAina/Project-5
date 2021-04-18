@@ -14,6 +14,8 @@ public class MainMenuActivity extends AppCompatActivity {
     private RecyclerView.Adapter mainMenuAdapter;
     private RecyclerView.LayoutManager mainLayoutManager;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +35,12 @@ public class MainMenuActivity extends AppCompatActivity {
         itemRecycler.setLayoutManager(mainLayoutManager);
         itemRecycler.setAdapter(mainMenuAdapter);
 
+        Order order= OrderDetailActivity.getOrder();
+        MenuItem[] items= new MenuItem[4];
+        order.setOrder(items);
+
+        StoreOrders storeOrders= StoreOrdersActivity.getStoreOrders();
+        Order[] orders= new Order[4];
+        storeOrders.setOrderList(orders);
     }
 }
