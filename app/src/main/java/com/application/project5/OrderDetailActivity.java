@@ -22,8 +22,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView finalPrice;
 
     StoreOrders storeOrders= StoreOrdersActivity.getStoreOrders();
-    ArrayList<MenuItem> arrayList=new ArrayList<>();
     ArrayAdapter arrayAdapter=null;
+    ArrayList<MenuItem> arrayList=new ArrayList<>();
 
     static Order order= new Order();
     final static double TAX_RATE= 6.625/100;
@@ -42,16 +42,17 @@ public class OrderDetailActivity extends AppCompatActivity {
     }
 
     public void setListView(){
+
         itemsListView=(ListView)findViewById(R.id.itemsListView);
         MenuItem[] indexes= new MenuItem[order.getNumOfItems()];
-
+        arrayList.clear();
         for (int i = 0; i < order.getOrder().length; i++) {
             if (order.getOrder()[i] != null) {
                 indexes[i] = order.getOrder()[i];
                 arrayList.add(indexes[i]);
             }
         }
-        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1);
+        arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1, arrayList);
         itemsListView.setAdapter(arrayAdapter);
         itemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
