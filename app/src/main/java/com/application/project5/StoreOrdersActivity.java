@@ -37,7 +37,6 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_orders);
-
         setSpinner();
     }
 
@@ -60,7 +59,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         for(int i=0; i<storeOrders.getOrderList().length;i++){
             if(storeOrders.getOrderList()[i]!=null) {
                 indexes[i] = storeOrders.getOrderList()[i].getOrderNumber();
-                orderNumbers.add(i);
+                orderNumbers.add(indexes[i]);
             }
         }
 
@@ -75,9 +74,6 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selected = (int) parent.getItemAtPosition(position);
         display(selected);
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " , Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -133,33 +129,40 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         this.finalPrice.setText("$"+String.format("%.2f",finalPrice));
     }
 
-    public void display(int selected){
-        itemsListView=(ListView)findViewById(R.id.orderTextArea);
+    public void display(int selected) {
+        itemsListView = (ListView) findViewById(R.id.orderTextArea);
         int order = selected;
         int select = 0;
-
+        arrayList = new ArrayList<>();
+        if (selected != 0) {
             for (int x = 0; x < storeOrders.getOrderList().length; x++) {
                 if (storeOrders.getOrderList()[x] != null) {
                     if (order == storeOrders.getOrderList()[x].getOrderNumber()) {
                         select = x;
                     }
                 }
+            }
 
-                Order display = storeOrders.getOrderList()[select];
-                for (int i = 0; i < display.getOrder().length; i++) {
-                    if (display.getOrder()[i] != null) {
-                        arrayList.add(display.getOrder()[i]);
-                    }
+            Order display = storeOrders.getOrderList()[select];
+            for (int i = 0; i < display.getOrder().length; i++) {
+                if (display.getOrder()[i] != null) {
+                    arrayList.add(display.getOrder()[i]);
                 }
+            }
 
-                arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1);
-                itemsListView.setAdapter(arrayAdapter);
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+            itemsListView.setAdapter(arrayAdapter);
 
             setOrderPrice(select);
             setTax(select);
             setFinalPrice(select);
+        } else {
+            arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+            itemsListView.setAdapter(arrayAdapter);
         }
     }
+
+
     /**
      * Cancel an order
      * @param view click of the cancel order button
@@ -177,10 +180,11 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
             }
             storeOrders.remove(storeOrders.getOrderList()[select]);
             setSpinner();
-            finalPrice.setText("");
-            tax.setText("");
-            finalPrice.setText("");
+            subtotal.setText("$0.00");
+            tax.setText("$0.00");
+            finalPrice.setText("$0.00");
             arrayList.clear();
+            display(0);
         }
         catch (NullPointerException ex){
             Toast.makeText(this, "Selected: " , Toast.LENGTH_LONG).show();
