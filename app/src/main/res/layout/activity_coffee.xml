@@ -202,7 +202,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:hint="quantity"
-            android:inputType="number" />
+            android:inputType="number"
+            android:onClick="updateSubtotal" />
     </com.google.android.material.textfield.TextInputLayout>
 
 

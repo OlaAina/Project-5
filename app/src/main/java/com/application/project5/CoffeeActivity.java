@@ -125,7 +125,7 @@ public class CoffeeActivity extends AppCompatActivity {
         return 0;
     }
 
-    String getCoffeeSize() {
+    public String getCoffeeSize() {
         try {
             int id = sizes.getCheckedRadioButtonId();
             RadioButton radioButton = (RadioButton) findViewById(id);
@@ -134,7 +134,7 @@ public class CoffeeActivity extends AppCompatActivity {
 
         }
         catch(NullPointerException e) {
-            Toast.makeText(this, "This is my Toast message!",
+            Toast.makeText(this, "Please select coffee size",
                     Toast.LENGTH_LONG).show();
             return null;
         }
@@ -156,27 +156,27 @@ public class CoffeeActivity extends AppCompatActivity {
     }
 
 
-    int checkQuantity() {
+    public int checkQuantity() {
         try {
             int check = Integer.parseInt(quantity.getText().toString());
             return check;
         }
         catch (NumberFormatException| NullPointerException  e) {
             orderButton.setEnabled(false);
-            Toast.makeText(this, "This is my Toast message!",
+            Toast.makeText(this, "Invalid integer!",
                     Toast.LENGTH_LONG).show();
             return -1;
         }
     }
 
-    void updateSubtotal() {
-        if(checkQuantity() != -1) {
-            int check = checkQuantity();
+    public void updateSubtotal(View v) {
+        int check = checkQuantity();
+        if(check != -1) {
             if(check >= 1) {
                 coffee.setQuantity(check);
                 if(getCoffeeSize() != null) {
                     coffee.itemPrice();
-                   orderButton.setEnabled(true);
+                    orderButton.setEnabled(true);
                     subtotalText.setText("");
                     coffee.totalPrice();
                     double total = coffee.getTotalPrice();
@@ -185,7 +185,7 @@ public class CoffeeActivity extends AppCompatActivity {
                 }
             }
             else if(check == 0) {
-                Toast.makeText(this, "This is my Toast message!",
+                Toast.makeText(this, "Please enter nonzero integer",
                         Toast.LENGTH_LONG).show();
                 subtotalText.setText("");
                 subtotalText.setText("$0.00");
@@ -201,10 +201,10 @@ public class CoffeeActivity extends AppCompatActivity {
         }
     }
 
-    void addToOrder(View v) {
+    public void addToOrder(View v) {
         if(coffee.getTotalPrice() == 0 ) {
             orderButton.setEnabled(false);
-            Toast.makeText(this, "Coffee Added!",
+            Toast.makeText(this, "error adding coffee to order",
                     Toast.LENGTH_LONG).show();
         }
 
@@ -213,7 +213,7 @@ public class CoffeeActivity extends AppCompatActivity {
             order.add(coffee);
             coffee = new Coffee();
             clear();
-            Toast.makeText(this, "Error",
+            Toast.makeText(this,  coffee + "added",
                     Toast.LENGTH_LONG).show();
         }
     }
