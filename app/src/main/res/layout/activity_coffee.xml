@@ -4,4 +4,207 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CoffeeActivity"/>
+    android:background="#FFFFFF"
+    android:backgroundTint="#EDE2D7"
+    tools:context=".CoffeeActivity">
+
+    <TextView
+        android:id="@+id/Coffee"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="44dp"
+        android:clickable="false"
+        android:gravity="center_horizontal"
+        android:text="Coffee"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#532D11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addToOrder"
+        android:text="Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Coffee"
+        app:layout_constraintVertical_bias="0.973" />
+
+
+    <RadioGroup
+        android:id="@+id/sizes"
+        android:layout_width="400dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="577dp"
+        android:onClick="getInitialPrice"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Coffee"
+        app:layout_constraintVertical_bias="0.0">
+
+        <RadioButton
+            android:id="@+id/shortButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="getInitialPrice"
+            android:text="Short" />
+
+        <RadioButton
+            android:id="@+id/tallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="getInitialPrice"
+            android:text="Tall" />
+
+        <RadioButton
+            android:id="@+id/grandeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="getInitialPrice"
+            android:text="Grande" />
+
+        <RadioButton
+            android:id="@+id/ventiButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="getInitialPrice"
+            android:text="Venti" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/creamBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="countAddins"
+        android:text="Cream"
+        app:layout_constraintBottom_toTopOf="@+id/syrupBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947" />
+
+    <CheckBox
+        android:id="@+id/syrupBox"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="countAddins"
+        android:text="Syrup"
+        app:layout_constraintBottom_toTopOf="@+id/milkBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.43"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/milkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:onClick="countAddins"
+        android:text="Milk"
+        app:layout_constraintBottom_toTopOf="@+id/caramelBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/caramelBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:onClick="countAddins"
+        android:text="Caramel"
+        app:layout_constraintBottom_toTopOf="@+id/whipBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/whipBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="204dp"
+        android:onClick="countAddins"
+        android:text="Whipped Cream"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Addins: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/subtotalText"
+        android:layout_width="192dp"
+        android:layout_height="38dp"
+        android:editable="false"
+        android:hint="Subtotal will be displayed here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="93dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="60dp"
+        android:text="Subtotal:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="397dp"
+        android:layout_height="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.793">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/quantity"
+            android:layout_width="248dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:hint="quantity"
+            android:inputType="number"
+            android:onClick="updateSubtotal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
