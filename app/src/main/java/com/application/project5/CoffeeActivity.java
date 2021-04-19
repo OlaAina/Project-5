@@ -211,10 +211,10 @@ public class CoffeeActivity extends AppCompatActivity {
         if(!coffee.equals(null)) {
             coffee.setAddins(getAddins());
             order.add(coffee);
+            Toast.makeText(this,  coffee + " added",
+                    Toast.LENGTH_LONG).show();
             coffee = new Coffee();
             clear();
-            Toast.makeText(this,  coffee + "added",
-                    Toast.LENGTH_LONG).show();
         }
     }
 

@@ -81,7 +81,7 @@ public class Coffee extends MenuItem{
 	 */
 	@Override
 	public String toString() {
-		return  "Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: " + this.getQuantity();
+		return  "Coffee:: Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: " + this.getQuantity();
 	
 	}
 	
