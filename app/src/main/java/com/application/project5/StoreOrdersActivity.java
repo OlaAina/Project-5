@@ -18,6 +18,7 @@ import java.util.List;
 
 public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
     private static StoreOrders storeOrders = new StoreOrders();
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     final static double TAX_RATE = 6.625 / 100;
@@ -181,6 +182,4 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
             Toast.makeText(this, "Selected: " , Toast.LENGTH_LONG).show();
         }
     }
-
-
 }
