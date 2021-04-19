@@ -74,6 +74,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         selected = (int) parent.getItemAtPosition(position);
+        display(selected);
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " , Toast.LENGTH_LONG).show();
@@ -88,7 +89,8 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * @param orderIndex the order whose price is to be displayed
      */
     public void setOrderPrice(int orderIndex){
-        subtotal.setText("");
+        subtotal=findViewById(R.id.subTotal);
+        subtotal.setText("$0.00");
         double orderPrice=storeOrders.getOrderList()[orderIndex].getOrderPrice();
         if(orderPrice<0){
             this.subtotal.setText(String.format("$" + "%.2f", orderPrice*(-1)));
@@ -103,7 +105,8 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * @param orderIndex the order index whose tax is to be displayed
      */
     public void setTax(int orderIndex){
-        tax.setText("");
+        tax=findViewById(R.id.tax);
+        tax.setText("$0.00");
         double orderPrice= storeOrders.getOrderList()[orderIndex].getOrderPrice();
         double taxPrice= TAX_RATE*orderPrice;
         if(taxPrice<0){
@@ -118,7 +121,8 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      * @param orderIndex the order index whose final price is to be displayed
      */
     public void setFinalPrice(int orderIndex){
-        finalPrice.setText("");
+        finalPrice=findViewById(R.id.finalPrice);
+        finalPrice.setText("$0.00");
         double finalPrice;
         double orderPrice= storeOrders.getOrderList()[orderIndex].getOrderPrice();
         double taxPrice= TAX_RATE*orderPrice;
@@ -129,7 +133,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
         this.finalPrice.setText("$"+String.format("%.2f",finalPrice));
     }
 
-    public void display(){
+    public void display(int selected){
         itemsListView=(ListView)findViewById(R.id.orderTextArea);
         int order = selected;
         int select = 0;
@@ -141,10 +145,10 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
                     }
                 }
 
-                Order selected = storeOrders.getOrderList()[select];
-                for (int i = 0; i < selected.getOrder().length; i++) {
-                    if (selected.getOrder()[i] != null) {
-                        arrayList.add(selected.getOrder()[i]);
+                Order display = storeOrders.getOrderList()[select];
+                for (int i = 0; i < display.getOrder().length; i++) {
+                    if (display.getOrder()[i] != null) {
+                        arrayList.add(display.getOrder()[i]);
                     }
                 }
 
