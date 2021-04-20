@@ -1,20 +1,15 @@
 package com.application.project5;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 public class CoffeeActivity extends AppCompatActivity {
 
@@ -23,7 +18,7 @@ public class CoffeeActivity extends AppCompatActivity {
     private CheckBox creamBox, syrupBox, milkBox, caramelBox, whipBox;
     private RadioGroup sizes;
     private Button orderButton;
-    Order order= OrderDetailActivity.getOrder();
+    Order order = OrderDetailActivity.getOrder();
     Coffee coffee = new Coffee();
 
 
@@ -35,12 +30,13 @@ public class CoffeeActivity extends AppCompatActivity {
         subtotalText = findViewById(R.id.subtotalText);
         quantity = findViewById(R.id.quantity);
         creamBox = findViewById(R.id.creamBox);
-        syrupBox = findViewById(R.id.creamBox);
+        syrupBox = findViewById(R.id.syrupBox);
         milkBox = findViewById(R.id.milkBox);
         whipBox = findViewById(R.id.whipBox);
         caramelBox = findViewById(R.id.caramelBox);
         sizes = findViewById(R.id.sizes);
         orderButton = findViewById(R.id.orderButton);
+        orderButton.setEnabled(false);
 
     }
 
@@ -224,18 +220,19 @@ public class CoffeeActivity extends AppCompatActivity {
         quantity.setText("");
         quantity.setEnabled(false);
         subtotalText.setText("");
+        subtotalText.setText("$0.00");
         RadioButton selected = (RadioButton)findViewById(sizes.getCheckedRadioButtonId());
-        selected.setSelected(false);
+        selected.setChecked(false);
         orderButton.setEnabled(false);
         disableBoxes();
     }
 
     void clearBoxes() {
-        creamBox.setSelected(false);
-        syrupBox.setSelected(false);
-        milkBox.setSelected(false);
-        caramelBox.setSelected(false);
-        whipBox.setSelected(false);
+        creamBox.setChecked(false);
+        syrupBox.setChecked(false);
+        milkBox.setChecked(false);
+        caramelBox.setChecked(false);
+        whipBox.setChecked(false);
     }
 
     void disableBoxes() {

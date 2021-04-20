@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#EDE2D7"
+    android:background="#E3D5CC"
+    android:backgroundTintMode="screen"
     tools:context=".CoffeeActivity">
 
     <TextView
@@ -29,6 +29,9 @@
         android:layout_height="wrap_content"
         android:onClick="addToOrder"
         android:text="Order"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/purple_200"
+        android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -68,7 +71,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="getInitialPrice"
-            android:text="Tall" />
+            android:text="Tall"
+            android:textColorHighlight="@color/purple_500"
+            android:textColorLink="@color/purple_500" />
 
         <RadioButton
             android:id="@+id/grandeButton"
@@ -76,7 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="getInitialPrice"
-            android:text="Grande" />
+            android:text="Grande"
+            android:textColorLink="@color/purple_500" />
 
         <RadioButton
             android:id="@+id/ventiButton"
@@ -84,7 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="getInitialPrice"
-            android:text="Venti" />
+            android:text="Venti"
+            android:textColorLink="@color/purple_500" />
     </RadioGroup>
 
     <CheckBox
@@ -164,10 +171,15 @@
 
     <TextView
         android:id="@+id/subtotalText"
-        android:layout_width="192dp"
-        android:layout_height="38dp"
+        android:layout_width="214dp"
+        android:layout_height="50dp"
         android:editable="false"
-        android:hint="Subtotal will be displayed here"
+        android:gravity="center"
+        android:hint="$0.00"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -181,12 +193,14 @@
         android:layout_height="38dp"
         android:layout_marginStart="60dp"
         android:text="Subtotal:"
+        android:textAlignment="textEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.867" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="397dp"
         android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,9 +212,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/quantity"
-            android:layout_width="248dp"
+            android:layout_width="246dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:background="#E3D5CC"
             android:hint="quantity"
             android:inputType="number"
             android:onClick="updateSubtotal" />

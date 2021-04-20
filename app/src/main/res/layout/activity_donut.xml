@@ -4,5 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FBF1F1"
     tools:context=".DonutActivity">
+
+    <ListView
+        android:id="@+id/donutList"
+        android:layout_width="398dp"
+        android:layout_height="210dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="269dp"
+        android:layout_height="56dp"
+        android:contextClickable="false"
+        android:editable="false"
+        android:gravity="center"
+        android:text="Donuts"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.118" />
+
+    <TextView
+        android:id="@+id/subtotal"
+        android:layout_width="202dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:hint="$0.00"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="147dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:text="Subtotal:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addToOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addToOrder"
+        android:text="order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.954" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="392dp"
+        android:layout_height="79dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donutList"
+        app:layout_constraintVertical_bias="0.268">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/quantityField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FBF1F1"
+            android:gravity="center"
+            android:hint="quantity"
+            android:inputType="number"
+            android:onClick="subtotal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

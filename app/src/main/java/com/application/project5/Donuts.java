@@ -10,36 +10,16 @@ package com.application.project5;
  *
  */
 public class Donuts extends MenuItem {
-	
-	String donutType; 
-	String flavor; 
-	
-	final static String YEAST_DONUT = "Yeast";
-	final static Double YEAST_DONUT_PRICE = 1.39;
-	final static String CAKE_DONUT = "Cake";
-	final static Double CAKE_DONUT_PRICE = 1.59;
-	final static String DONUT_HOLE = "Donut Hole";
-	final static Double DONUT_HOLE_PRICE = 0.33;
+
+	final static Double donutPrice = 1.39;
+	String flavor;
 	 
 	/**
 	 * 	Method to calculate and set the price of a coffee depending on doughnut type
 	 */
 	@Override
 	public void itemPrice() {
-		
-		if(donutType.equals(YEAST_DONUT)) {
-			setItemPrice(YEAST_DONUT_PRICE);
-			
-		}
-		
-		else if(donutType.equals(CAKE_DONUT)) {
-			setItemPrice(CAKE_DONUT_PRICE);
-
-		}
-		
-		else {
-			setItemPrice(DONUT_HOLE_PRICE);
-		}
+		setItemPrice(donutPrice);
     }
 	
 	/**
@@ -52,11 +32,9 @@ public class Donuts extends MenuItem {
 		if(obj instanceof Donuts)
 		{
 			Donuts donut= (Donuts) obj;
-			if(donut.donutType.equals(this.donutType)) {
-				if(donut.flavor.equals(this.flavor)) {
-					if(donut.getItemPrice() == this.getItemPrice()) {
-						return true; 
-					}
+			if(donut.flavor.equals(this.flavor)) {
+				if(donut.getItemPrice() == this.getItemPrice()) {
+					return true;
 				}
 			}
 		}
@@ -69,24 +47,9 @@ public class Donuts extends MenuItem {
 	 */
 	@Override
 	public String toString() {
-		return "Donut Type: " + donutType + " :: " + "Flavor: " + flavor + " :: " + "Quantity: " + this.getQuantity();
+		return  "Donut:: Flavor: " + flavor + " :: " + "Quantity: " + this.getQuantity();
 	}
 
-	/**
-	 * Method to get the doughnut type
-	 * @return donutType
-	 */
-	public String getDonutType() {
-		return donutType;
-	}
-
-	/**
-	 * Set doughnut type with a string
-	 * @param donutType, string representation of the type of doughnut
-	 */
-	public void setDonutType(String donutType) {
-		this.donutType = donutType;
-	}
 
 	/**
 	 * Get the flavor of doughnut
