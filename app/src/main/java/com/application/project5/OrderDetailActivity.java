@@ -64,7 +64,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     public void setSubTotal(){
         subtotal= findViewById(R.id.subTotal);
-        subtotal.setText("");
+        subtotal.setText(R.string.empty);
         double orderPrice=order.getOrderPrice();
         if(orderPrice<0){
             subtotal.setText(String.format("$"+"%.2f", orderPrice*(-1)));
@@ -77,7 +77,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     public void setTax(){
         tax= findViewById(R.id.tax);
-        tax.setText("");
+        tax.setText(R.string.empty);
         double price= order.getOrderPrice();
         double taxPrice= (TAX_RATE* price);
         if(taxPrice<0){
@@ -90,7 +90,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     public void setFinalPrice(){
         finalPrice= findViewById(R.id.finalPrice);
-        finalPrice.setText("");
+        finalPrice.setText(R.string.empty);
         double finalPrice;
         double orderPrice= order.getOrderPrice();
         double taxPrice= TAX_RATE*orderPrice;
@@ -112,7 +112,7 @@ public class OrderDetailActivity extends AppCompatActivity {
             setFinalPrice();
         }
         catch(NullPointerException ex){
-            Toast.makeText(this, "Null", Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.remove_failed, Toast.LENGTH_LONG).show();
         }
     }
     public void placeOrder(View view){
@@ -127,7 +127,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 makeOrderNumber();
                 storeOrders.add(order);
             } catch (NullPointerException ex) {
-                Toast.makeText(this, "Null", Toast.LENGTH_LONG);
+                Toast.makeText(this, R.string.error_in_placing_order, Toast.LENGTH_LONG);
             }
             arrayList.clear();
             arrayAdapter.notifyDataSetChanged();
@@ -137,10 +137,10 @@ public class OrderDetailActivity extends AppCompatActivity {
             setFinalPrice();
             setTax();
             setSubTotal();
-            Toast.makeText(this, "Order Placed", Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.place_order_success, Toast.LENGTH_LONG);
         }
         else{
-            Toast.makeText(this, "Order Empty", Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.empty_order, Toast.LENGTH_LONG);
         }
     }
 

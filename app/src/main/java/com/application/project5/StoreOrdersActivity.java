@@ -180,14 +180,15 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
             }
             storeOrders.remove(storeOrders.getOrderList()[select]);
             setSpinner();
-            subtotal.setText("$0.00");
-            tax.setText("$0.00");
-            finalPrice.setText("$0.00");
+            subtotal.setText(R.string.nothing_selected);
+            tax.setText(R.string.nothing_selected);
+            finalPrice.setText(R.string.nothing_selected);
             arrayList.clear();
             display(0);
+            Toast.makeText(this, R.string.cancel_success , Toast.LENGTH_LONG).show();
         }
         catch (NullPointerException ex){
-            Toast.makeText(this, "Selected: " , Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.cancel_failed , Toast.LENGTH_LONG).show();
         }
     }
 }
