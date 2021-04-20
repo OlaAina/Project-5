@@ -20,7 +20,7 @@
             android:id="@+id/itemText"
             android:layout_width="match_parent"
             android:layout_height="85dp"
-            android:text="TextView"
+            android:text="@string/textView"
             app:layout_constraintEnd_toStartOf="@+id/itemImage"
             app:layout_constraintTop_toTopOf="parent" />
 
