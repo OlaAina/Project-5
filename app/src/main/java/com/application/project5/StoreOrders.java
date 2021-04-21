@@ -132,27 +132,4 @@ public class StoreOrders implements Customizable {
 	public void setOrderList(Order[] orderList){
 		this.orderList= orderList;
 	}
-
-	/**
-	 * Exports the current order
-	 * @param fw the file to be written to
-	 * @param selected the order that was selected
-	 * @throws IOException
-	 */
-	public void export(FileWriter fw, int selected) throws IOException {
-		int select=0;
-		for(int x=0;x<this.orderList.length;x++){
-			if(orderList[x]!=null) {
-				if (this.orderList[x].getOrderNumber() == selected) {
-					select = x;
-				}
-			}
-		}
-		for(int i=0;i<orderList[select].getOrder().length;i++){
-			if(!(orderList[select].getOrder()[i] ==null)) {
-				String content = String.valueOf(orderList[select].getOrder()[i]);
-				fw.write(content + "\n");
-			}
-		}
-	}
 }

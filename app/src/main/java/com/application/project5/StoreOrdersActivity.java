@@ -86,7 +86,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      */
     public void setOrderPrice(int orderIndex){
         subtotal=findViewById(R.id.subTotal);
-        subtotal.setText("$0.00");
+        subtotal.setText(R.string.nothing_selected);
         double orderPrice=storeOrders.getOrderList()[orderIndex].getOrderPrice();
         if(orderPrice<0){
             this.subtotal.setText(String.format("$" + "%.2f", orderPrice*(-1)));
@@ -102,7 +102,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      */
     public void setTax(int orderIndex){
         tax=findViewById(R.id.tax);
-        tax.setText("$0.00");
+        tax.setText(R.string.nothing_selected);
         double orderPrice= storeOrders.getOrderList()[orderIndex].getOrderPrice();
         double taxPrice= TAX_RATE*orderPrice;
         if(taxPrice<0){
@@ -118,7 +118,7 @@ public class StoreOrdersActivity extends AppCompatActivity implements AdapterVie
      */
     public void setFinalPrice(int orderIndex){
         finalPrice=findViewById(R.id.finalPrice);
-        finalPrice.setText("$0.00");
+        finalPrice.setText(R.string.nothing_selected);
         double finalPrice;
         double orderPrice= storeOrders.getOrderList()[orderIndex].getOrderPrice();
         double taxPrice= TAX_RATE*orderPrice;

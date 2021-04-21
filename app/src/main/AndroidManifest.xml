@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project5">
-        <activity android:name=".MainMenuActivity">
+        <activity android:name=".MainMenuActivity" android:label="@string/title_activity_main_menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DonutActivity"></activity>
-        <activity android:name=".CoffeeActivity"></activity>
-        <activity android:name=".StoreOrdersActivity"></activity>
-        <activity android:name=".OrderDetailActivity"></activity>
+        <activity android:label="@string/order_donut" android:name=".DonutActivity" android:parentActivityName=".MainMenuActivity" ></activity>
+        <activity android:label="@string/order_coffee" android:name=".CoffeeActivity" android:parentActivityName=".MainMenuActivity"></activity>
+        <activity android:label="@string/store_orders" android:name=".StoreOrdersActivity" android:parentActivityName=".MainMenuActivity"></activity>
+        <activity android:label="@string/order_details" android:name=".OrderDetailActivity" android:parentActivityName=".MainMenuActivity"></activity>
     </application>
 
 </manifest>
