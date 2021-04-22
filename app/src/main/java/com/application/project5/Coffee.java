@@ -83,7 +83,7 @@ public class Coffee extends MenuItem implements Customizable{
 	 */
 	@Override
 	public String toString() {
-		return  "Coffee:: Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: " + this.getQuantity();
+		return R.string.coffee_size + size + R.string.seperator + R.string.addins_string + addins + R.string.seperator + R.string.quantity_string + this.getQuantity();
 
 	}
 
@@ -147,18 +147,15 @@ public class Coffee extends MenuItem implements Customizable{
 		if(this.addins == null){
 			this.addins = (add + ", ");
 			tracker++;
-			System.out.println(this.addins);
 			return true;
 		}
 		if(this.addins.contains(add)){
-			System.out.println(this.addins);
 			return false;
 		}
 		else {
 			this.addins = this.addins.concat((add + ", "));
 			tracker++;
 			setNumOfAddins(tracker);
-			System.out.println(this.addins);
 			return true;
 		}
 	}
@@ -175,11 +172,9 @@ public class Coffee extends MenuItem implements Customizable{
 			this.addins = this.addins.replace((remove + ", "), "");
 			tracker--;
 			setNumOfAddins(tracker);
-			System.out.println(this.addins);
 			return true;
 		}
 		else {
-			System.out.println(this.addins);
 			return false;
 		}
 	}

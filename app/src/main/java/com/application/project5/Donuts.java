@@ -47,7 +47,7 @@ public class Donuts extends MenuItem {
 	 */
 	@Override
 	public String toString() {
-		return  "Donut:: Flavor: " + flavor + " :: " + "Quantity: " + this.getQuantity();
+		return R.string.donut_flavor + flavor +  R.string.seperator + R.string.quantity_string + this.getQuantity();
 	}
 
 
