@@ -51,5 +51,11 @@
     <string name="jelly">Jelly</string>
     <string name="Bdaycake">Birthday Cake</string>
     <string name="none">none</string>
-    <string name="item_not_selected">No item Selected</string>
+    <string name="space">\" \"</string>
+    <string name="comma">\", \"</string>
+    <string name="coffee_size">\"Coffee:: Size: \"</string>
+    <string name="seperator">\" :: \"</string>
+    <string name="addins_string">\"Addins: \"</string>
+    <string name="quantity_string">\"Quantity: \"</string>
+    <string name="donut_flavor">\"Donut:: Flavor: \"</string>
 </resources>

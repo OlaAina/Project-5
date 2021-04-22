@@ -65,19 +65,19 @@ public class CoffeeActivity extends AppCompatActivity {
     String getAddins() {
         String addins = "";
         if(creamBox.isChecked()) {
-            addins = addins.concat(creamBox.getText().toString() + ", ");
+            addins = addins.concat(creamBox.getText().toString() + getString(R.string.comma));
         }
         if(syrupBox.isChecked()) {
-            addins = addins.concat(syrupBox.getText().toString() + ", ");
+            addins = addins.concat(syrupBox.getText().toString() + getString(R.string.comma));
         }
         if(milkBox.isChecked()) {
-            addins = addins.concat(milkBox.getText().toString() + ", ");
+            addins = addins.concat(milkBox.getText().toString() + getString(R.string.comma));
         }
         if(caramelBox.isChecked()) {
-            addins = addins.concat(caramelBox.getText().toString()+ ", ");
+            addins = addins.concat(caramelBox.getText().toString()+ getString(R.string.comma));
         }
         if(whipBox.isChecked()) {
-            addins = addins.concat(whipBox.getText().toString() + " ");
+            addins = addins.concat(whipBox.getText().toString() + getString(R.string.space));
         }
         if(addins.equals("")) {
             addins = getString(R.string.none);
@@ -106,8 +106,12 @@ public class CoffeeActivity extends AppCompatActivity {
      */
     void countHelper() {
         coffee.itemPrice();
-        subtotalText.setText("");
-        subtotalText.setText("$" + (String.format("%.2f", coffee.getItemPrice())));
+        quantity.setText(getString(R.string.reset));
+        coffee.setQuantity(0);
+        coffee.totalPrice();
+        System.out.println(coffee.getQuantity());
+        subtotalText.setText(R.string.reset);
+        subtotalText.setText(getString(R.string.dollar) + (String.format("%.2f", coffee.getItemPrice())));
     }
 
     /**
@@ -262,13 +266,6 @@ public class CoffeeActivity extends AppCompatActivity {
                 subtotalText.setText(getString(R.string.nothing_selected));
                 orderButton.setEnabled(false);
             }
-           /* else {
-                Toast.makeText(this, "This is my Toast message!",
-                        Toast.LENGTH_LONG).show();
-                subtotalText.setText("");
-                orderButton.setEnabled(false);
-
-            }   */
         }
     }
 
@@ -284,12 +281,13 @@ public class CoffeeActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-        if(!coffee.equals(null)) {
+       else if(!coffee.equals(null)) {
            coffee.setAddins(getAddins());
             order.add(coffee);
             Toast.makeText(this,  coffee + getString(R.string.added),
                     Toast.LENGTH_LONG).show();
             coffee = new Coffee();
+            coffee.tracker = 0;
             clear();
         }
     }

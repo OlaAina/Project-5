@@ -1,4 +1,7 @@
 package com.application.project5;
+
+import android.content.res.Resources;
+
 /**
  * Class that describes object coffee, extends class MenuItem
  * This class consists of:
@@ -83,7 +86,9 @@ public class Coffee extends MenuItem implements Customizable{
 	 */
 	@Override
 	public String toString() {
-		return  "Coffee:: Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: " + this.getQuantity();
+
+
+		return "Coffee: Size" + size + "::" + "Addins: " + addins + "::" + "Quantity: "+ this.getQuantity();
 
 	}
 
@@ -147,18 +152,16 @@ public class Coffee extends MenuItem implements Customizable{
 		if(this.addins == null){
 			this.addins = (add + ", ");
 			tracker++;
-			System.out.println(this.addins);
+			setNumOfAddins(tracker);
 			return true;
 		}
 		if(this.addins.contains(add)){
-			System.out.println(this.addins);
 			return false;
 		}
 		else {
 			this.addins = this.addins.concat((add + ", "));
 			tracker++;
 			setNumOfAddins(tracker);
-			System.out.println(this.addins);
 			return true;
 		}
 	}
@@ -175,11 +178,9 @@ public class Coffee extends MenuItem implements Customizable{
 			this.addins = this.addins.replace((remove + ", "), "");
 			tracker--;
 			setNumOfAddins(tracker);
-			System.out.println(this.addins);
 			return true;
 		}
 		else {
-			System.out.println(this.addins);
 			return false;
 		}
 	}
