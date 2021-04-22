@@ -11,11 +11,18 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+/**
+ * Adapter for the main menu activity recycler view
+ * @author Adeola Adebanjo, Olaolu Aina
+ *
+ */
 public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MainMenuViewHolder>{
     private ArrayList<MainMenuItem> itemList;
     private RecyclerView mainRecycler;
     private Context context;
+    /**
+     * Defines what happens on click
+     */
     private final View.OnClickListener mOnClickListener = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
@@ -44,6 +51,9 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MainMe
     public MainMenuAdapter(ArrayList<MainMenuItem> menuList) {
     }
 
+    /**
+     * View holder for main menu
+     */
     public static class MainMenuViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageResource;
         private TextView item;
@@ -55,12 +65,22 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MainMe
         }
     }
 
+    /**
+     * Adapter for main menu
+     * @param itemArrayList the array list of main menu items
+     * @param context the context
+     */
     public MainMenuAdapter(ArrayList<MainMenuItem> itemArrayList, Context context){
         itemList= itemArrayList;
         this.context= context;
     }
 
-
+    /**
+     * Defines what happens on creation of the view holder
+     * @param parent the parent view
+     * @param viewType
+     * @return
+     */
     @Override
     public MainMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.main_menu_placeholder,parent,false);
@@ -77,11 +97,19 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MainMe
         holder.item.setText(currentItem.getItem());
     }
 
+    /**
+     * Getter for item count
+     * @return the item count
+     */
     @Override
     public int getItemCount() {
         return itemList.size();
     }
 
+    /**
+     * attatch to the recycler view
+     * @param recyclerView the recycler view to attach to
+     */
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);

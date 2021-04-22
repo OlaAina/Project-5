@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project 5</string>
+    <string name="app_name">RUCafe</string>
     <string name="cancel_order">Cancel Order</string>
     <string name="final_price">Final Price</string>
     <string name="title_activity_main_menu">Main Menu</string>
