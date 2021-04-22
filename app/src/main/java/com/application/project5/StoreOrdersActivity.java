@@ -1,6 +1,5 @@
 package com.application.project5;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;

@@ -1,7 +1,5 @@
 package com.application.project5;
 
-import java.io.FileWriter;
-import java.io.IOException;
 /**
  * This class defines the store orders object
  * The class consists of:

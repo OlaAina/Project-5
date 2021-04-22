@@ -132,12 +132,18 @@ public class OrderDetailActivity extends AppCompatActivity {
      */
     public void removeItem(View view){
         try {
-            order.setPrice(order.getOrderPrice() - selected.getItemPrice());
-            order.remove(selected);
-            setListView();
-            setSubTotal();
-            setTax();
-            setFinalPrice();
+                double priceToRemove= selected.getItemPrice();
+                boolean removed= order.remove(selected);
+                if(removed) {
+                    order.setPrice(order.getOrderPrice() - priceToRemove);
+                    setListView();
+                    setSubTotal();
+                    setTax();
+                    setFinalPrice();
+                }
+                else{
+                    Toast.makeText(this, R.string.item_not_selected, Toast.LENGTH_LONG).show();
+                }
         }
         catch(NullPointerException ex){
             Toast.makeText(this, R.string.remove_failed, Toast.LENGTH_LONG).show();
@@ -160,7 +166,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 makeOrderNumber();
                 storeOrders.add(order);
             } catch (NullPointerException ex) {
-                Toast.makeText(this, R.string.error_in_placing_order, Toast.LENGTH_LONG);
+                Toast.makeText(this, R.string.error_in_placing_order, Toast.LENGTH_LONG).show();
             }
             arrayList.clear();
             arrayAdapter.notifyDataSetChanged();
@@ -170,10 +176,10 @@ public class OrderDetailActivity extends AppCompatActivity {
             setFinalPrice();
             setTax();
             setSubTotal();
-            Toast.makeText(this, R.string.place_order_success, Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.place_order_success, Toast.LENGTH_LONG).show();
         }
         else{
-            Toast.makeText(this, R.string.empty_order, Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.empty_order, Toast.LENGTH_LONG).show();
         }
     }
 
