@@ -301,8 +301,7 @@ public class CoffeeActivity extends AppCompatActivity {
         quantity.setEnabled(false);
         subtotalText.setText(getString(R.string.reset));
         subtotalText.setText(getString(R.string.nothing_selected));
-        RadioButton selected = (RadioButton)findViewById(sizes.getCheckedRadioButtonId());
-        selected.setChecked(false);
+        sizes.clearCheck();
         orderButton.setEnabled(false);
         disableBoxes();
     }
