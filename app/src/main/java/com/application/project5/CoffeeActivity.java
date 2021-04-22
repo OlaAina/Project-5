@@ -106,6 +106,10 @@ public class CoffeeActivity extends AppCompatActivity {
      */
     void countHelper() {
         coffee.itemPrice();
+        quantity.setText(getString(R.string.reset));
+        coffee.setQuantity(0);
+        coffee.totalPrice();
+        System.out.println(coffee.getQuantity());
         subtotalText.setText(R.string.reset);
         subtotalText.setText(getString(R.string.dollar) + (String.format("%.2f", coffee.getItemPrice())));
     }
@@ -277,12 +281,13 @@ public class CoffeeActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-        if(!coffee.equals(null)) {
+       else if(!coffee.equals(null)) {
            coffee.setAddins(getAddins());
             order.add(coffee);
             Toast.makeText(this,  coffee + getString(R.string.added),
                     Toast.LENGTH_LONG).show();
             coffee = new Coffee();
+            coffee.tracker = 0;
             clear();
         }
     }
