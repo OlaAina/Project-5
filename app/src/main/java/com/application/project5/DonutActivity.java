@@ -50,6 +50,9 @@ public class DonutActivity extends AppCompatActivity {
             donut.itemPrice();
             subtotal.setText(getString(R.string.dollar) + String.format("%.2f", donut.getItemPrice()));
             quantityField.setEnabled(true);
+            quantityField.setText(getString(R.string.reset));
+            donut.setQuantity(0);
+            donut.totalPrice();
             }
         });
     }
@@ -74,6 +77,7 @@ public class DonutActivity extends AppCompatActivity {
 
     /**
      * Method to adjust sub-total after entering the quantity
+     * @param v, on enter will update sub-total
      */
     public void subtotal(View v) {
         int check = checkQuantity();

@@ -109,7 +109,6 @@ public class CoffeeActivity extends AppCompatActivity {
         quantity.setText(getString(R.string.reset));
         coffee.setQuantity(0);
         coffee.totalPrice();
-        System.out.println(coffee.getQuantity());
         subtotalText.setText(R.string.reset);
         subtotalText.setText(getString(R.string.dollar) + (String.format("%.2f", coffee.getItemPrice())));
     }
@@ -234,7 +233,7 @@ public class CoffeeActivity extends AppCompatActivity {
         }
         catch (NumberFormatException| NullPointerException  e) {
             orderButton.setEnabled(false);
-            Toast.makeText(this, R.string.invalid_int,
+            Toast.makeText(this, R.string.nonzero_int,
                     Toast.LENGTH_LONG).show();
             return -1;
         }

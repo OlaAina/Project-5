@@ -88,7 +88,7 @@ public class Coffee extends MenuItem implements Customizable{
 	public String toString() {
 
 
-		return "Coffee: Size " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: "+ this.getQuantity();
+		return "Coffee:: Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: "+ this.getQuantity();
 
 	}
 

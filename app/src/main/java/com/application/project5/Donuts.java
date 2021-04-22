@@ -50,7 +50,7 @@ public class Donuts extends MenuItem {
 	 */
 	@Override
 	public String toString() {
-		return "Donut: Flavor " + flavor +  " :: " + "Quantity: "+ this.getQuantity();
+		return "Donut:: Flavor: " + flavor +  " :: " + "Quantity: "+ this.getQuantity();
 	}
 
 
