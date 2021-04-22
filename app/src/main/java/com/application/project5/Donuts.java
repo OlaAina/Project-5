@@ -1,4 +1,7 @@
 package com.application.project5;
+
+import android.content.res.Resources;
+
 /**
  * Class that describes object donuts, extends class MenuItem
  * This class consists of:
@@ -47,7 +50,7 @@ public class Donuts extends MenuItem {
 	 */
 	@Override
 	public String toString() {
-		return R.string.donut_flavor + flavor +  R.string.seperator + R.string.quantity_string + this.getQuantity();
+		return "Donut: Flavor " + flavor +  " :: " + "Quantity: "+ this.getQuantity();
 	}
 
 

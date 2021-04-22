@@ -262,13 +262,6 @@ public class CoffeeActivity extends AppCompatActivity {
                 subtotalText.setText(getString(R.string.nothing_selected));
                 orderButton.setEnabled(false);
             }
-           /* else {
-                Toast.makeText(this, "This is my Toast message!",
-                        Toast.LENGTH_LONG).show();
-                subtotalText.setText("");
-                orderButton.setEnabled(false);
-
-            }   */
         }
     }
 

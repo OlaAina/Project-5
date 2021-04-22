@@ -95,11 +95,6 @@ public class DonutActivity extends AppCompatActivity {
                 subtotal.setText(getString(R.string.nothing_selected));
                 orderButton.setEnabled(false);
             }
-            /* else {
-                Toast.makeText(this, "Please enter nonzero integer",
-                        Toast.LENGTH_LONG).show();
-                orderButton.setEnabled(false);
-            }*/
         }
         else {
             subtotal.setText(getString(R.string.reset));
