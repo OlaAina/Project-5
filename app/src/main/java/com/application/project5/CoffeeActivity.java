@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Methods to get string representations of coffee add-ins
  * Methods to add and remove coffee addins
  * Method to check if all boxes are not selected
- * A helper method for method CountAddins
+ * A helper method for method addAddins
  * Methods to enable, disable and clear check boxes
  * Method to get the base price of initial price
  * Method to get coffee size
