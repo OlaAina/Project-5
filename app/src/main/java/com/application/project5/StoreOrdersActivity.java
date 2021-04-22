@@ -15,7 +15,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class that controls the Store orders Activity
+ * This class consists of:
+ * Methods to set fields, spinner and list view
+ * Method to cancel order
+ * Getters and Setters
+ * @author Adeola Adebanjo, Olaolu Aina
+ *
+ */
 public class StoreOrdersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 

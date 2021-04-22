@@ -13,7 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+/**
+ * Class that controls the Order Details Activity
+ * This class consists of:
+ * Methods to get string representations of coffee add-ins
+ * Methods to Place order and remove items
+ * Methods to set all fields and list view
+ * @author Adeola Adebanjo, Olaolu Aina
+ *
+ */
 public class OrderDetailActivity extends AppCompatActivity {
 
     private ListView itemsListView;
@@ -30,7 +38,10 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     MenuItem selected= null;
 
-
+    /**
+     * Defines what happens on create
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +52,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         setFinalPrice();
     }
 
+    /**
+     * set the list view
+     */
     public void setListView(){
 
         itemsListView=(ListView)findViewById(R.id.itemsListView);
@@ -62,6 +76,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Set the subtotal
+     */
     public void setSubTotal(){
         subtotal= findViewById(R.id.subTotal);
         subtotal.setText(R.string.empty);
@@ -75,6 +92,9 @@ public class OrderDetailActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * set the tax field
+     */
     public void setTax(){
         tax= findViewById(R.id.tax);
         tax.setText(R.string.empty);
@@ -88,6 +108,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * set the final price field
+     */
     public void setFinalPrice(){
         finalPrice= findViewById(R.id.finalPrice);
         finalPrice.setText(R.string.empty);
@@ -102,6 +125,11 @@ public class OrderDetailActivity extends AppCompatActivity {
             this.finalPrice.setText("$" + String.format("%.2f", finalPrice));
         }
     }
+
+    /**
+     * remove a selected item
+     * @param view the click of the remove item button
+     */
     public void removeItem(View view){
         try {
             order.setPrice(order.getOrderPrice() - selected.getItemPrice());
@@ -115,6 +143,11 @@ public class OrderDetailActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.remove_failed, Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * Place an order
+     * @param view the click of the place order button
+     */
     public void placeOrder(View view){
         int empty=0;
         for(int i=0; i< order.getNumOfItems();i++){
@@ -144,30 +177,19 @@ public class OrderDetailActivity extends AppCompatActivity {
         }
     }
 
-    public ListView getItemsListView() {
-        return itemsListView;
-    }
-
-    public void setItemsListView(ListView itemsListView) {
-        this.itemsListView = itemsListView;
-    }
-
-    public StoreOrders getStoreOrders() {
-        return storeOrders;
-    }
-
-    public void setStoreOrders(StoreOrders storeOrders) {
-        this.storeOrders = storeOrders;
-    }
-
+    /**
+     * getter for order
+     * @return the order
+     */
     public static Order getOrder() {
         return order;
     }
 
-    public static void setOrder(Order order) {
-        OrderDetailActivity.order = order;
-    }
     private static int startingNumber=1;
+
+    /**
+     * creates the order number
+     */
     public static void makeOrderNumber(){
         order.setOrderNumber(startingNumber);
         startingNumber++;

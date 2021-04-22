@@ -8,7 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import java.util.ArrayList;
-
+/**
+ * Class that controls the Main menu Activity
+ * Provides the items for the recycler view
+ * @author Adeola Adebanjo, Olaolu Aina
+ *
+ */
 public class MainMenuActivity extends AppCompatActivity {
     private RecyclerView itemRecycler;
     private RecyclerView.Adapter mainMenuAdapter;
