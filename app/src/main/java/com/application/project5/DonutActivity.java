@@ -10,7 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/**
+ * Class that controls the Donuts GUI
+ * This class consists of:
+ * An on create method
+ * A method to check quantity
+ * A method to display the sub-total
+ * A method to add to order
+ * A method to clear all doughnut selections
+ *
+ * @author Adeola Adebanjo, Olaolu Aina
+ *
+ */
 public class DonutActivity extends AppCompatActivity {
     private TextView subtotal, quantityField;
     private Button orderButton;
@@ -28,7 +39,7 @@ public class DonutActivity extends AppCompatActivity {
         orderButton = findViewById(R.id.addToOrder);
         quantityField = findViewById(R.id.quantityField);
 
-        String[] flavors = {"Blueberry", "Pumpkin Spice", "Powdered", "Glazed", "Frosted", "Jelly", "Birthday Cake"};
+        String[] flavors = {getString(R.string.blueberry), getString(R.string.pumpSpice), getString(R.string.powder), getString(R.string.glaze), getString(R.string.frost), getString(R.string.jelly), getString(R.string.Bdaycake)};
         orderButton.setEnabled(false);
         ArrayAdapter arrayAdapter= new ArrayAdapter(this,android.R.layout.simple_list_item_1, flavors);
         donutList.setAdapter(arrayAdapter);
@@ -37,7 +48,7 @@ public class DonutActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             flavor = donutList.getItemAtPosition(position).toString();
             donut.itemPrice();
-            subtotal.setText("$" + String.format("%.2f", donut.getItemPrice()));
+            subtotal.setText(getString(R.string.dollar) + String.format("%.2f", donut.getItemPrice()));
             quantityField.setEnabled(true);
             }
         });
@@ -55,7 +66,7 @@ public class DonutActivity extends AppCompatActivity {
         }
         catch (NumberFormatException| NullPointerException  e) {
             orderButton.setEnabled(false);
-            Toast.makeText(this, "Please enter a nonzero numerical integer",
+            Toast.makeText(this, R.string.nonzero_int,
                     Toast.LENGTH_LONG).show();
             return -1;
         }
@@ -70,28 +81,28 @@ public class DonutActivity extends AppCompatActivity {
             donut.setQuantity(check);
             if(check >= 1) {
                 orderButton.setEnabled(true);
-                subtotal.setText("");
+                subtotal.setText(getString(R.string.reset));
                 donut.setFlavor(flavor);
                 donut.totalPrice();
                 double total = donut.getTotalPrice();
                 donut.setItemPrice(total);
-                subtotal.setText("$" + String.format("%.2f" , total));
+                subtotal.setText(getString(R.string.dollar) + String.format("%.2f" , total));
             }
             else if(check == 0 || donut.getTotalPrice() == 0) {
-                Toast.makeText(this, "Please enter nonzero quantity",
+                Toast.makeText(this, R.string.enter_quantity,
                         Toast.LENGTH_LONG).show();
-                subtotal.setText("");
-                subtotal.setText("$0.00");
+                subtotal.setText(getString(R.string.reset));
+                subtotal.setText(getString(R.string.nothing_selected));
                 orderButton.setEnabled(false);
             }
-            else {
+            /* else {
                 Toast.makeText(this, "Please enter nonzero integer",
                         Toast.LENGTH_LONG).show();
                 orderButton.setEnabled(false);
-            }
+            }*/
         }
         else {
-            subtotal.setText("");
+            subtotal.setText(getString(R.string.reset));
             orderButton.setEnabled(false);
         }
     }
@@ -101,14 +112,14 @@ public class DonutActivity extends AppCompatActivity {
      */
     public void addToOrder(View v) {
         if(donut.getTotalPrice() == 0 ) {
-            Toast.makeText(this, "Please enter quantity",
+            Toast.makeText(this, getString(R.string.enter_quantity),
                     Toast.LENGTH_LONG).show();
             orderButton.setEnabled(false);
             return;
         }
         if(!donut.equals(null)) {
             order.add(donut);
-            Toast.makeText(this,  donut + " added",
+            Toast.makeText(this,  donut + getString(R.string.added),
                     Toast.LENGTH_LONG).show();
             clear();
             donut = new Donuts();
@@ -119,9 +130,9 @@ public class DonutActivity extends AppCompatActivity {
      * Method to clear doughnut selections after adding to order
      */
     void clear() {
-        subtotal.setText("");
-        subtotal.setText("$0.00");
-        quantityField.setText("");
+        subtotal.setText(getString(R.string.reset));
+        subtotal.setText(getString(R.string.nothing_selected));
+        quantityField.setText(getString(R.string.reset));
         quantityField.setEnabled(false);
         orderButton.setEnabled(false);
     }

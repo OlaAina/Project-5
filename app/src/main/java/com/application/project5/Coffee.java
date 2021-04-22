@@ -6,53 +6,55 @@ package com.application.project5;
  * A method to check if equal
  * A method to display string representation of object coffee
  * Getter and setter methods
+ * Two methods implemented from class Customizable
  * @author Adeola Adebanjo, Olaolu Aina
  *
  */
-public class Coffee extends MenuItem{
-	
-	String size; 
-	String addins; 
+public class Coffee extends MenuItem implements Customizable{
+
+	String size;
+	String addins;
 	int numOfAddins;
-	
-	
-	final static String SHORT = "Short"; 
+
+
+	final static String SHORT = "Short";
 	final static Double SHORT_PRICE = 1.99;
 	final static String TALL = "Tall";
 	final static Double TALL_PRICE = 2.49;
 	final static String GRANDE = "Grande";
 	final static Double GRANDE_PRICE = 2.99;
-	final static String VENTI = "Venti";
 	final static Double VENTI_PRICE = 3.49;
-	final static Double ADDIN_COST = .20; 
-	
-	 /**
-	  * Method to set the price of a coffee depending on size and number of add-ins
-	  */
+	final static Double ADDIN_COST = .20;
+	static int tracker = 0;
+
+
+	/**
+	 * Method to set the price of a coffee depending on size and number of add-ins
+	 */
 	@Override
 	public void itemPrice() {
-		
+
 		if(size.equals(SHORT)) {
 			setItemPrice(SHORT_PRICE + (numOfAddins * ADDIN_COST));
-			
+
 		}
-		
+
 		else if(size.equals(TALL)) {
 			setItemPrice(TALL_PRICE + (numOfAddins * ADDIN_COST));
-			
+
 		}
-		
+
 		else if(size.equals(GRANDE)) {
 			setItemPrice(GRANDE_PRICE + (numOfAddins * ADDIN_COST));
-			
+
 		}
-		
+
 		else {
 			setItemPrice(VENTI_PRICE + (numOfAddins * ADDIN_COST));
 		}
 
-    }
-	
+	}
+
 	/**
 	 * Method to check if two coffees are equal
 	 * @param obj, an object to compare
@@ -62,7 +64,7 @@ public class Coffee extends MenuItem{
 	public boolean equals(Object obj) {
 		if(obj instanceof Coffee)
 		{
-		Coffee coffee= (Coffee) obj;
+			Coffee coffee= (Coffee) obj;
 			if(coffee.size.equals(this.size)) {
 				if(coffee.getItemPrice() == this.getItemPrice()) {
 					if(coffee.addins.equals(this.addins)) {
@@ -73,7 +75,7 @@ public class Coffee extends MenuItem{
 		}
 		return false;
 	}
-	
+
 
 	/**
 	 * Method to display string representation of coffee
@@ -82,9 +84,9 @@ public class Coffee extends MenuItem{
 	@Override
 	public String toString() {
 		return  "Coffee:: Size: " + size + " :: " + "Addins: " + addins + " :: " + "Quantity: " + this.getQuantity();
-	
+
 	}
-	
+
 	/**
 	 * Method to get the size of coffee
 	 * @return size
@@ -98,7 +100,7 @@ public class Coffee extends MenuItem{
 	 * @param size, the string size of the coffee
 	 */
 	public void setSize(String size) {
-		this.size = size; 
+		this.size = size;
 	}
 
 	/**
@@ -116,8 +118,8 @@ public class Coffee extends MenuItem{
 	public void setAddins(String addins) {
 		this.addins = addins;
 	}
-	
-	
+
+
 	/**
 	 * get the number of Addins
 	 * @return numOfAddins
@@ -128,10 +130,57 @@ public class Coffee extends MenuItem{
 
 	/**
 	 * Set the number of addins
-	 * @param numOfAddins, the numerical number of addins 
+	 * @param numOfAddins, the numerical number of addins
 	 */
 	public void setNumOfAddins(int numOfAddins) {
 		this.numOfAddins = numOfAddins;
 	}
 
+	/**
+	 * Method to add addins
+	 * @param obj, object to be added to string of addins
+	 * @return true, if added false otherwise
+	 */
+	@Override
+	public boolean add(Object obj) {
+		String add = (String) obj;
+		if(this.addins == null){
+			this.addins = (add + ", ");
+			tracker++;
+			System.out.println(this.addins);
+			return true;
+		}
+		if(this.addins.contains(add)){
+			System.out.println(this.addins);
+			return false;
+		}
+		else {
+			this.addins = this.addins.concat((add + ", "));
+			tracker++;
+			setNumOfAddins(tracker);
+			System.out.println(this.addins);
+			return true;
+		}
+	}
+
+	/**
+	 * Method to remove addins
+	 * @param obj, object to be remove to string of addins
+	 * @return true, if remove false otherwise
+	 */
+	@Override
+	public boolean remove(Object obj) {
+		String remove = (String) obj;
+		if(this.addins.contains(remove)){
+			this.addins = this.addins.replace((remove + ", "), "");
+			tracker--;
+			setNumOfAddins(tracker);
+			System.out.println(this.addins);
+			return true;
+		}
+		else {
+			System.out.println(this.addins);
+			return false;
+		}
+	}
 }
